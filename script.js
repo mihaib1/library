@@ -1,13 +1,14 @@
 let myLibrary = [];
 
-function Book(title, author, pagesNumber, isRead, rating, firstPublicationYear, shortDescription) {
+function Book(title, author, pagesNumber, isRead, rating, firstPublicationYear, shortDescription, image) {
     this.title = title;
     this.author = author;
     this.pagesNumber = pagesNumber;
     this.isRead = isRead;
     this.rating = rating;
     this.firstPublicationYear = firstPublicationYear;
-    this.shortDescription = shortDescription
+    this.shortDescription = shortDescription;
+    this.image = image;
 }
 
 function addBookToLibrary(book) {
@@ -27,21 +28,9 @@ function seeAllBooks() {
     myLibrary.forEach(book => console.log(book));
 }
 
-
-function displayBook(){
-    const test = document.getElementById("books");
-    console.log(test);
-    newDiv = document.createElement("div");
-    let a = test.appendChild(newDiv);
-    a.classList.add("test");
-}
-
-//displayBook();
-
 harryPotter = new Book("Harry Potter", "J.K. Rolling", 200, true, 7.8);
 harryPotter2 = new Book("Harry Potter 2", "J.K. Rolling", 300, false, 8.2);
 
-myLibrary.push(harryPotter);
 myLibrary.push(harryPotter2);
 
 addBookToLibrary(harryPotter);
@@ -53,20 +42,25 @@ seeAllBooks();
 formId = document.getElementById("insert-form");
 
 showFormBtn = document.getElementById("new");
-showFormBtn = document.addEventListener("click", function(event){
+showFormBtn.addEventListener("click", function(event){
     formId.classList.toggle("hidden");
-    formId.classList.toggle("form-active");
-})
+    body.classList.toggle("form-active");
+});
 
-let container = document.getElementById("books-cards");
-console.log(`container = ${container}`);
+closeFormBtn = document.getElementById("close-form")
+closeFormBtn.addEventListener("click", function(event){
+    if(!formId.classList.contains("hidden")){
+        body.classList.toggle("form-active");
+        formId.classList.toggle("hidden");
+    }
+});
 
+function createNewBookCard(bookObject){
+    let bookCardsContainer = document.getElementById("books-cards");
 
-
-function createNewCardContainer(){
     let bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
-    container.appendChild(bookCard);
+    bookCardsContainer.appendChild(bookCard);
 
     let bookImage = document.createElement("div");
     bookImage.classList.add("book-image");
@@ -82,20 +76,19 @@ function createNewCardContainer(){
     aboutBook.classList.add("about-book");
     bookCard.appendChild(aboutBook);
 
-    title = document.createElement("h3");
+    let title = document.createElement("h3");
     title.textContent = "Trebuie modificat cu book.title";
 
-    bookDescription = document.createElement("div");
+    let bookDescription = document.createElement("div");
     bookDescription.classList.add("book-description");
     
-
-    bookTitle = document.createElement("div");
+    let bookTitle = document.createElement("div");
     bookTitle.classList.add("book-title");
 
     bookAuthor = document.createElement("div");
     bookAuthor.classList.add("book-author");
 
-    bookPageCount = document.createElement("div");
+    let bookPageCount = document.createElement("div");
     bookPageCount.classList.add("book-page-num");
     bookDescription.appendChild(bookTitle);
     bookDescription.appendChild(bookAuthor);
@@ -103,19 +96,19 @@ function createNewCardContainer(){
 
     aboutBook.appendChild(bookDescription);
 
-    buttonsRow = document.createElement("div");
+    let buttonsRow = document.createElement("div");
     buttonsRow.classList.add("buttons-row");
 
-    star = document.createElement("object");
+    let star = document.createElement("object");
     star.data = "star.svg";
 
-    follow = document.createElement("object");
+    let follow = document.createElement("object");
     follow.data = "follow.svg";
 
-    share = document.createElement("object");
+    let share = document.createElement("object");
     share.data = "share.svg";
 
-    var buttons = [star, follow, share];
+    let buttons = [star, follow, share];
     buttons.forEach(function (button) {
         button.classList.add("card-svg");
         buttonsRow.appendChild(button);
@@ -123,7 +116,11 @@ function createNewCardContainer(){
     aboutBook.appendChild(buttonsRow);
 }
 
-createNewCardContainer();
+createNewBookCard();
+
+// de creat un obiect pe care il vom da ca param pentru createNewCardbookCardsContainer
+// in createNewCardbookCardsContainer o sa punem textContent = obiect.key pt fiecare camp.
+
 
 /*
                     <div class="book-card">
