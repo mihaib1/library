@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+    </style>
+    <title>Library</title>
+</head>
+<body>
+    <div id="container">
+        <div class="header">
+            <div class="search-panel">
+                <div class="search">
+                    <img src="search.png" class="search-img">
+                    <input type="search" class="search-bar">
+                </div>
+                <div class="user-panel">
+                    <img src="notifications.png" class="notifications-img">
+                    <a href="https://www.google.com" class ="profile"> <img src="profile-img.png" class="small-pic"> </a>
+                    <div class="user-name">Mihai Băiașu</div>
+                </div>
+            </div>
+            <div class="welcome-screen">
+                <div class="user-greet">
+                    <img src="profile-img.png" class="normal-pic">
+                    <div class="greeting">
+                        <div>Hi there,</div>
+                        <div>Mihai Băiașu (@mihaibaiasu)</div>
+                    </div>
+                </div>
+
+
+                <div class="buttons">
+                    <button class="hero-btn" id="new">New</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-page">
+            <div class="books">
+                <h3>Your books</h3>
+                <div id="books-cards">
+                    <div class="book-card">
+                        <div class="book-image">
+                            <img src="hp.jpeg" alt="book-cover" class="book-cover">
+                        </div>
+                        <div class="about-book">
+                            <h3>Harry Potter and the Deathly Hallows</h3> 
+                            <div class="book-description">
+                                <div class="book-title"><em>Title: </em>Harry Potter and the Deathly Hallows</div>
+                                <div class="book-author"><em>Author: </em>J.K. Rolling</div>
+                                <div class="book-page-num"><em>Number of pages: </em>322</div>
+                            </div>
+                            <div class="buttons-row">
+                                <object data="star.svg" class="card-svg"></object>
+                                <object data="follow.svg" class="card-svg"></object>
+                                <object data="share.svg" class="card-svg"></object>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="book-card">
+                        <h3>Small book</h3>
+                        <div class="book-description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, deserunt, 
+                            architecto velit sint quaerat corporis eos aspernatur perspiciatis laboriosam reprehenderit 
+                            accusamus odit nostrum odio suscipit vel quasi tempore rerum est!
+                        </div>
+                        <div class="buttons-row">
+                            <object data="star.svg" class="card-svg"></object>
+                            <object data="follow.svg" class="card-svg"></object>
+                            <object data="share.svg" class="card-svg"></object>
+                        </div>
+                    </div>
+    
+                    <div class="book-card">
+                        <h3>Impossilbe App</h3>
+                        <div class="book-description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, deserunt, 
+                            architecto velit sint quaerat corporis eos aspernatur perspiciatis laboriosam reprehenderit 
+                            accusamus odit nostrum odio suscipit vel quasi tempore rerum est!
+                        </div>
+                        <div class="buttons-row">
+                            <object data="star.svg" class="card-svg"></object>
+                            <object data="follow.svg" class="card-svg"></object>
+                            <object data="share.svg" class="card-svg"></object>
+                        </div>
+                    </div>
+    
+                    <div class="book-card">
+                        <h3>Easy Peasy App</h3>
+                        <div class="book-description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, deserunt, 
+                            architecto velit sint quaerat corporis eos aspernatur perspiciatis laboriosam reprehenderit 
+                            accusamus odit nostrum odio suscipit vel quasi tempore rerum est!
+                        </div>
+                        <div class="buttons-row">
+                            <object data="star.svg" class="card-svg"></object>
+                            <object data="follow.svg" class="card-svg"></object>
+                            <object data="share.svg" class="card-svg"></object>
+                        </div>
+                    </div>
+    
+                    <div class="book-card">
+                        <h3>Ad Blocker</h3>
+                        <div class="book-description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, deserunt, 
+                            architecto velit sint quaerat corporis eos aspernatur perspiciatis laboriosam reprehenderit 
+                            accusamus odit nostrum odio suscipit vel quasi tempore rerum est!
+                        </div>
+                        <div class="buttons-row">
+                            <object data="star.svg" class="card-svg"></object>
+                            <object data="follow.svg" class="card-svg"></object>
+                            <object data="share.svg" class="card-svg"></object>
+                        </div>
+                    </div>
+    
+                    <div class="book-card">
+                        <h3>Money Maker</h3>
+                        <div class="book-description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, deserunt, 
+                            architecto velit sint quaerat corporis eos aspernatur perspiciatis laboriosam reprehenderit 
+                            accusamus odit nostrum odio suscipit vel quasi tempore rerum est!
+                        </div>
+                        <div class="buttons-row">
+                            <object data="star.svg" class="card-svg"></object>
+                            <object data="follow.svg" class="card-svg"></object>
+                            <object data="share.svg" class="card-svg"></object>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="announcements">
+                <h3>Announcements</h3>
+                <div class="announcements-list">
+                    <div class="announcement">
+                        <h4>Site Maintenance</h4>
+                        <div class="announcement-description">
+                            Vestibulum condimentum tellus lacus, in accumsan elit maximus ac. Donec henderit congue...
+                        </div>
+                    </div>
+
+                    <div class="announcement">
+                        <h4>Community Share Day</h4>
+                        <div class="announcement-description">
+                            for testing purposes only
+                        </div>
+                    </div>
+
+                    <div class="announcement">
+                        <h4>Updated Privacy Policy</h4>
+                        <div class="announcement-description">
+                            for testing purposes only
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trending">
+                <h3>Trending</h3>
+                <div class="trending-list">
+                    <div class="user">
+                        <img src="profile-img.png" class="normal-pic">
+                        <div class="about-user">
+                            <div class="user-tag">@tegan</div>
+                            <div class="description">World Peace Builder</div>
+                        </div>
+                    </div>
+
+                    <div class="user">
+                        <img src="profile-img.png" class="normal-pic">
+                        <div class="about-user">
+                            <div class="user-tag">@morgan</div>
+                            <div class="description">Super Cool book</div>
+                        </div>
+                    </div>
+
+                    <div class="user">
+                        <img src="profile-img.png" class="normal-pic">
+                        <div class="about-user">
+                            <div class="user-tag">@kendall</div>
+                            <div class="description">Life Changing App</div>
+                        </div>
+                    </div>
+
+                    <div class="user">
+                        <img src="profile-img.png" class="normal-pic">
+                        <div class="about-user">
+                            <div class="user-tag">@alex</div>
+                            <div class="description">No Traffic Maker</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="insert-form" class="hidden">
+        <form action="" method="get" class="book-form">
+
+            <div class="title">
+                <label for="title">Title <span aria-required="true"></span></label>
+                <input type="text" name="title" id="title">
+            </div>
+
+            <div class="author">
+                <label for="author">Author <span aria-required="true"></span></label>
+                <input type="text" name="author" id="author">
+            </div>
+
+            <div class="pages-number">
+                <label for="page-number">Number of pages <span aria-required="true"></span></label>
+                <input type="number" name="pageNumber" id="pageNumber">
+            </div>
+
+            <div class="was-read">
+                <label for="wasRead">Did you read it?</label>
+                <input type="checkbox" name="wasRead" id="wasRead">
+            </div>
+
+            <div class="rating">
+                <label for="rating">Rating </label>
+                <input type="number" name="rating" id="rating">
+            </div>            
+        </form>
+    </div>
+
+    <button id="showForm">Show form!</button>
+
+</body>
+</html>
+
+
+
+
