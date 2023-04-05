@@ -326,12 +326,58 @@ object{
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 5000;
-    width:30%;
     justify-content: center;
     align-items: center;
 }
 
 .form-active{
     background-color: black;
-    opacity: 90%;
+    opacity: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-area{
+    background-color: white;
+    padding:32px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.book-author::before{
+    content: "Author: ";
+    font-style: italic;
+}
+
+.book-title::before{
+    content: "Title: ";
+    font-style: italic;
+}
+
+.book-page-num::before{
+    content: "Pages: ";
+    font-style: italic;
+}
+
+.book-rating::before{
+    content: "Rating: ";
+    font-style: italic;
+}
+
+form{
+    display:grid;
+}
+
+.title, .rating, .author, .pages-number, .was-read{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 8px;
+    padding: 4px;
+}
+
+#close-form{
+    width:48px;
+    align-self:flex-end;
 }

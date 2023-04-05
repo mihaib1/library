@@ -36,7 +36,7 @@
 
 
                 <div class="buttons">
-                    <button class="hero-btn" id="new">New</button>
+                    <button class="hero-btn" id="new">New Book</button>
                 </div>
             </div>
         </div>
@@ -52,85 +52,15 @@
                         <div class="about-book">
                             <h3>Harry Potter and the Deathly Hallows</h3> 
                             <div class="book-description">
-                                <div class="book-title"><em>Title: </em>Harry Potter and the Deathly Hallows</div>
-                                <div class="book-author"><em>Author: </em>J.K. Rolling</div>
-                                <div class="book-page-num"><em>Number of pages: </em>322</div>
+                                <div class="book-title">Harry Potter and the Deathly Hallows</div>
+                                <div class="book-author">J.K. Rolling</div>
+                                <div class="book-page-num">322</div>
                             </div>
                             <div class="buttons-row">
                                 <object data="star.svg" class="card-svg"></object>
                                 <object data="follow.svg" class="card-svg"></object>
                                 <object data="share.svg" class="card-svg"></object>
                             </div>
-                        </div>
-                    </div>
-    
-                    <div class="book-card">
-                        <h3>Small book</h3>
-                        <div class="book-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, deserunt, 
-                            architecto velit sint quaerat corporis eos aspernatur perspiciatis laboriosam reprehenderit 
-                            accusamus odit nostrum odio suscipit vel quasi tempore rerum est!
-                        </div>
-                        <div class="buttons-row">
-                            <object data="star.svg" class="card-svg"></object>
-                            <object data="follow.svg" class="card-svg"></object>
-                            <object data="share.svg" class="card-svg"></object>
-                        </div>
-                    </div>
-    
-                    <div class="book-card">
-                        <h3>Impossilbe App</h3>
-                        <div class="book-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, deserunt, 
-                            architecto velit sint quaerat corporis eos aspernatur perspiciatis laboriosam reprehenderit 
-                            accusamus odit nostrum odio suscipit vel quasi tempore rerum est!
-                        </div>
-                        <div class="buttons-row">
-                            <object data="star.svg" class="card-svg"></object>
-                            <object data="follow.svg" class="card-svg"></object>
-                            <object data="share.svg" class="card-svg"></object>
-                        </div>
-                    </div>
-    
-                    <div class="book-card">
-                        <h3>Easy Peasy App</h3>
-                        <div class="book-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, deserunt, 
-                            architecto velit sint quaerat corporis eos aspernatur perspiciatis laboriosam reprehenderit 
-                            accusamus odit nostrum odio suscipit vel quasi tempore rerum est!
-                        </div>
-                        <div class="buttons-row">
-                            <object data="star.svg" class="card-svg"></object>
-                            <object data="follow.svg" class="card-svg"></object>
-                            <object data="share.svg" class="card-svg"></object>
-                        </div>
-                    </div>
-    
-                    <div class="book-card">
-                        <h3>Ad Blocker</h3>
-                        <div class="book-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, deserunt, 
-                            architecto velit sint quaerat corporis eos aspernatur perspiciatis laboriosam reprehenderit 
-                            accusamus odit nostrum odio suscipit vel quasi tempore rerum est!
-                        </div>
-                        <div class="buttons-row">
-                            <object data="star.svg" class="card-svg"></object>
-                            <object data="follow.svg" class="card-svg"></object>
-                            <object data="share.svg" class="card-svg"></object>
-                        </div>
-                    </div>
-    
-                    <div class="book-card">
-                        <h3>Money Maker</h3>
-                        <div class="book-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, deserunt, 
-                            architecto velit sint quaerat corporis eos aspernatur perspiciatis laboriosam reprehenderit 
-                            accusamus odit nostrum odio suscipit vel quasi tempore rerum est!
-                        </div>
-                        <div class="buttons-row">
-                            <object data="star.svg" class="card-svg"></object>
-                            <object data="follow.svg" class="card-svg"></object>
-                            <object data="share.svg" class="card-svg"></object>
                         </div>
                     </div>
                 </div>
@@ -205,38 +135,42 @@
 
 
     <div id="insert-form" class="hidden">
-        <form action="" method="get" class="book-form">
-
-            <div class="title">
-                <label for="title">Title <span aria-required="true"></span></label>
-                <input type="text" name="title" id="title">
-            </div>
-
-            <div class="author">
-                <label for="author">Author <span aria-required="true"></span></label>
-                <input type="text" name="author" id="author">
-            </div>
-
-            <div class="pages-number">
-                <label for="page-number">Number of pages <span aria-required="true"></span></label>
-                <input type="number" name="pageNumber" id="pageNumber">
-            </div>
-
-            <div class="was-read">
-                <label for="wasRead">Did you read it?</label>
-                <input type="checkbox" name="wasRead" id="wasRead">
-            </div>
-
-            <div class="rating">
-                <label for="rating">Rating </label>
-                <input type="number" name="rating" id="rating">
-            </div>
-            
+        <div class="form-area">
             <button id="close-form">Close form!</button>
-        </form>
+
+            <form class="book-form" id="form">
+
+                <div class="title">
+                    <label for="title">Title <span aria-required="true"></span></label>
+                    <input type="text" name="title" id="title">
+                </div>
+    
+                <div class="author">
+                    <label for="author">Author <span aria-required="true"></span></label>
+                    <input type="text" name="author" id="author">
+                </div>
+    
+                <div class="pages-number">
+                    <label for="page-number">Number of pages <span aria-required="true"></span></label>
+                    <input type="number" name="pagesNumber" id="pagesNumber">
+                </div>
+    
+                <div class="was-read">
+                    <label for="wasRead">Did you read it?</label>
+                    <input type="checkbox" name="wasRead" id="wasRead">
+                </div>
+    
+                <div class="rating">
+                    <label for="rating">Rating </label>
+                    <input type="number" name="rating" id="rating" step="0.01">
+                </div>
+                
+                <button type="submit">Submit form!</button>
+            </form>
+        </div>    
+
     </div>
 
-    <button id="showForm">Show form!</button>
 
 </body>
 </html>
