@@ -1,14 +1,15 @@
 let myLibrary = [];
 
-function Book(title, author, pagesNumber, isRead, rating, firstPublicationYear, shortDescription, image) {
+function Book(title, author, pageCount, isRead, rating, shortDescription, firstPublicationYear, image) {
     this.title = title;
     this.author = author;
-    this.pagesNumber = pagesNumber;
+    this.pageCount = pageCount;
     this.isRead = isRead;
     this.rating = rating;
-    this.firstPublicationYear = firstPublicationYear;
     this.shortDescription = shortDescription;
+    this.firstPublicationYear = firstPublicationYear;
     this.image = image;
+    this.creationDate = new Date();
 }
 
 function addBookToLibrary(book) {
@@ -24,6 +25,9 @@ function addBookToLibrary(book) {
     }
 }
 
+Book.prototype.printBook = function(){
+    console.log(this.title);
+}
 
 
 harryPotter = new Book("Harry Potter", "J.K. Rolling", 200, true, 7.8);
@@ -94,15 +98,17 @@ function createNewBookCard(bookObject){
     
     let bookPageCount = document.createElement("div");
     bookPageCount.classList.add("book-page-num");
-    if(bookObject.pagesNumber){
-        bookPageCount.textContent += bookObject.pagesNumber;
+    if(isNullOrEmpty(bookObject.pageCount)){
+        bookPageCount.style="display: none";
     }
+    bookPageCount.textContent += bookObject.pageCount;
 
     let bookRating = document.createElement("div");
     bookRating.classList.add("book-rating");
-    if(bookObject.rating) {
-        bookRating.textContent += bookObject.rating;
+    if(isNullOrEmpty(bookObject.rating)) {
+        bookRating.style="display: none"; 
     }
+    bookRating.textContent += bookObject.rating;
 
     let elementsToAppend = [bookTitle, bookAuthor, bookPageCount, bookRating];
     elementsToAppend.forEach((element) => bookDescription.appendChild(element));
@@ -129,22 +135,43 @@ function createNewBookCard(bookObject){
     aboutBook.appendChild(buttonsRow);
 }
 
-createNewBookCard(harryPotter);
+const fieldsList = ["title", "author", ]
 
 var bookData = {};
 const form = document.getElementById("form");
 form.addEventListener("submit", function(e){
     e.preventDefault();
-    const formData = new FormData(form);
+    document.getElementById("author");
+    console.log(`testtt title is: ${author.value}`);
+    bookObj = new Book(title.value, author.value, pageCount.value, wasRead.value ? true : null, rating.value, shortDescription.value);
+    /*const formData = new FormData(form);
     for(const pair of formData.entries()){
         bookData[pair[0]] = pair[1];
         formData.delete(pair);
-    }
+    } */
     form.reset();
-    console.log(bookData);
-    createNewBookCard(bookData);
+    myLibrary.push(bookObj);
+    createNewBookCard(myLibrary[myLibrary.length-1]);
+    formId.classList.toggle("hidden");
+    formId.classList.toggle("form-active");
 });
 
+function isNullOrEmpty(value){
+    if(value === null){
+        return true;
+    }
+    if(value === undefined){
+        return true;
+    }
+    if(value == "" || value == " "){
+        return true;
+    }
+    if(typeof value === "string" && value.trim().length == 0){
+        return true;
+    }
+
+    return false;
+}
 
 // de creat un obiect pe care il vom da ca param pentru createNewCardbookCardsContainer
 // in createNewCardbookCardsContainer o sa punem textContent = obiect.key pt fiecare camp.

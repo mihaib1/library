@@ -142,27 +142,32 @@
 
                 <div class="title">
                     <label for="title">Title <span aria-required="true"></span></label>
-                    <input type="text" name="title" id="title">
+                    <input type="text" name="title" id="title" required>
                 </div>
     
                 <div class="author">
                     <label for="author">Author <span aria-required="true"></span></label>
-                    <input type="text" name="author" id="author">
+                    <input type="text" name="author" id="author" required>
                 </div>
     
-                <div class="pages-number">
-                    <label for="page-number">Number of pages <span aria-required="true"></span></label>
-                    <input type="number" name="pagesNumber" id="pagesNumber">
-                </div>
-    
-                <div class="was-read">
-                    <label for="wasRead">Did you read it?</label>
-                    <input type="checkbox" name="wasRead" id="wasRead">
+                <div class="page-count">
+                    <label for="pageCount">Number of pages <span aria-required="true"></span></label>
+                    <input type="number" name="pageCount" id="pageCount">
                 </div>
     
                 <div class="rating">
                     <label for="rating">Rating </label>
                     <input type="number" name="rating" id="rating" step="0.01">
+                </div>
+
+                <div class="short-description">
+                    <label for="shortDescription">Short Description </label>
+                    <textarea name="shortDescription" id="shortDescription" rows="5" cols="30"> </textarea>
+                </div>
+
+                <div class="was-read">
+                    <label for="wasRead">Did you read it?</label>
+                    <input type="checkbox" name="wasRead" id="wasRead">
                 </div>
                 
                 <button type="submit">Submit form!</button>

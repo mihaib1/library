@@ -370,11 +370,20 @@ form{
     display:grid;
 }
 
-.title, .rating, .author, .pages-number, .was-read{
+.title, .rating, .author, .page-count, .was-read, .short-description{
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 8px;
-    padding: 4px;
+    padding: 6px;
+}
+
+input[type=checkbox]{
+    text-align: left;
+}
+
+label{
+    display:flex;
+    align-items: center;
 }
 
 #close-form{
