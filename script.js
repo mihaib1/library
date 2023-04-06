@@ -1,13 +1,12 @@
 let myLibrary = [];
 
-function Book(title, author, pageCount, isRead, rating, shortDescription, firstPublicationYear, image) {
+function Book(title, author, pageCount, isRead, rating, shortDescription, image) {
     this.title = title;
     this.author = author;
     this.pageCount = pageCount;
     this.isRead = isRead;
     this.rating = rating;
     this.shortDescription = shortDescription;
-    this.firstPublicationYear = firstPublicationYear;
     this.image = image;
     this.creationDate = new Date();
 }
@@ -141,14 +140,7 @@ var bookData = {};
 const form = document.getElementById("form");
 form.addEventListener("submit", function(e){
     e.preventDefault();
-    document.getElementById("author");
-    console.log(`testtt title is: ${author.value}`);
     bookObj = new Book(title.value, author.value, pageCount.value, wasRead.value ? true : null, rating.value, shortDescription.value);
-    /*const formData = new FormData(form);
-    for(const pair of formData.entries()){
-        bookData[pair[0]] = pair[1];
-        formData.delete(pair);
-    } */
     form.reset();
     myLibrary.push(bookObj);
     createNewBookCard(myLibrary[myLibrary.length-1]);
@@ -172,29 +164,3 @@ function isNullOrEmpty(value){
 
     return false;
 }
-
-// de creat un obiect pe care il vom da ca param pentru createNewCardbookCardsContainer
-// in createNewCardbookCardsContainer o sa punem textContent = obiect.key pt fiecare camp.
-
-
-/*
-                    <div class="book-card">
-                        <div class="book-image">
-                            <img src="hp.jpeg" alt="book-cover" class="book-cover">
-                        </div>
-                        <div class="about-book">
-                            <h3>Harry Potter and the Deathly Hallows</h3> 
-                            <div class="book-description">
-                                <div class="book-title"><em>Title: </em>Harry Potter and the Deathly Hallows</div>
-                                <div class="book-author"><em>Author: </em>J.K. Rolling</div>
-                                <div class="book-page-num"><em>Number of pages: </em>322</div>
-                            </div>
-                            <div class="buttons-row">
-                                <object data="star.svg" class="card-svg"></object>
-                                <object data="follow.svg" class="card-svg"></object>
-                                <object data="share.svg" class="card-svg"></object>
-                            </div>
-                        </div>
-                    </div>
-*/
-
