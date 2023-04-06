@@ -117,26 +117,17 @@ function createNewBookCard(bookObject){
     let buttonsRow = document.createElement("div");
     buttonsRow.classList.add("buttons-row");
 
-    let star = document.createElement("object");
-    star.data = "star.svg";
-
-    let follow = document.createElement("object");
-    follow.data = "follow.svg";
-
-    let share = document.createElement("object");
-    share.data = "share.svg";
-
-    let buttons = [star, follow, share];
-    buttons.forEach(function (button) {
+    let buttonsList = ["star.svg", "follow.svg", "share.svg"];
+    buttonsList.forEach(function(element) {
+        button = document.createElement("object");
+        button.data = element;
         button.classList.add("card-svg");
         buttonsRow.appendChild(button);
     });
+
     aboutBook.appendChild(buttonsRow);
 }
 
-const fieldsList = ["title", "author", ]
-
-var bookData = {};
 const form = document.getElementById("form");
 form.addEventListener("submit", function(e){
     e.preventDefault();
@@ -164,3 +155,21 @@ function isNullOrEmpty(value){
 
     return false;
 }
+
+
+// code for adding buttons
+
+    /*let star = document.createElement("object");
+    star.data = "star.svg";
+
+    let follow = document.createElement("object");
+    follow.data = "follow.svg";
+
+    let share = document.createElement("object");
+    share.data = "share.svg"; */
+
+    /*let buttons = [star, follow, share];
+    buttons.forEach(function (button) {
+        button.classList.add("card-svg");
+        buttonsRow.appendChild(button);
+    }); */
