@@ -1,4 +1,5 @@
 let myLibrary = [];
+let rmvbutton;
 
 function Book(title, author, pageCount, isRead, rating, shortDescription, image) {
     this.title = title;
@@ -9,6 +10,7 @@ function Book(title, author, pageCount, isRead, rating, shortDescription, image)
     this.shortDescription = shortDescription;
     this.image = image;
     this.creationDate = new Date();
+    this.bookId = myLibrary.length.toString() + "-" + this.title + "-" + this.author;
 }
 
 function addBookToLibrary(book) {
@@ -24,17 +26,8 @@ function addBookToLibrary(book) {
     }
 }
 
-Book.prototype.printBook = function(){
-    console.log(this.title);
-}
-
-
 harryPotter = new Book("Harry Potter", "J.K. Rolling", 200, true, 7.8);
 harryPotter2 = new Book("Harry Potter 2", "J.K. Rolling", 300, false, 8.2);
-
-myLibrary.push(harryPotter2);
-
-addBookToLibrary(harryPotter);
 
 formId = document.getElementById("insert-form");
 
@@ -52,12 +45,25 @@ closeFormBtn.addEventListener("click", function(event){
     }
 });
 
+const form = document.getElementById("form");
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+    bookObj = new Book(title.value, author.value, pageCount.value, wasRead.value ? true : null, rating.value, shortDescription.value);
+    form.reset();
+    myLibrary.push(bookObj);
+    createNewBookCard(myLibrary[myLibrary.length-1]);
+    formId.classList.toggle("hidden");
+    formId.classList.toggle("form-active");
+});
+
+
 function createNewBookCard(bookObject){
     let bookCardsContainer = document.getElementById("books-cards");
 
     let bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
     bookCardsContainer.appendChild(bookCard);
+    bookCard.setAttribute("bookId", bookObject.bookId);
 
     let bookImage = document.createElement("div");
     bookImage.classList.add("book-image");
@@ -75,12 +81,13 @@ function createNewBookCard(bookObject){
 
     let title = document.createElement("h3");
     title.textContent = bookObject.title;
+    title.value = bookObject.title;
     aboutBook.appendChild(title);
 
     let bookDescription = document.createElement("div");
     bookDescription.classList.add("book-description");
     if(bookObject.shortDescription) {
-        bookDescription.textContent = bookObject.shortDescription
+        bookDescription.textContent = bookObject.shortDescription;
     }
     
     let bookTitle = document.createElement("div");
@@ -116,28 +123,48 @@ function createNewBookCard(bookObject){
 
     let buttonsRow = document.createElement("div");
     buttonsRow.classList.add("buttons-row");
+    createBottomButtons(buttonsRow);
+    aboutBook.appendChild(buttonsRow);
 
+    let removeButtonWrapper = document.createElement("div");
+    removeButtonWrapper.classList.add("remove-btn");
+    let removeBtn = document.createElement("button");
+    removeBtn.classList.add("removeBtn");
+    removeButtonWrapper.appendChild(removeBtn);
+    bookCard.appendChild(removeButtonWrapper);
+    setDeleteButtonAttributes(removeBtn, bookObject);
+    console.log(bookObject.bookId);
+}
+
+function createBottomButtons(divToAppendTo){
     let buttonsList = ["star.svg", "follow.svg", "share.svg"];
     buttonsList.forEach(function(element) {
         button = document.createElement("object");
         button.data = element;
         button.classList.add("card-svg");
-        buttonsRow.appendChild(button);
+        divToAppendTo.appendChild(button);
     });
-
-    aboutBook.appendChild(buttonsRow);
 }
 
-const form = document.getElementById("form");
-form.addEventListener("submit", function(e){
-    e.preventDefault();
-    bookObj = new Book(title.value, author.value, pageCount.value, wasRead.value ? true : null, rating.value, shortDescription.value);
-    form.reset();
-    myLibrary.push(bookObj);
-    createNewBookCard(myLibrary[myLibrary.length-1]);
-    formId.classList.toggle("hidden");
-    formId.classList.toggle("form-active");
-});
+function setDeleteButtonAttributes(button, bookObject) {
+    const attributes = ["title", "author", "pageCount", "rating", "isRead", "bookId"];
+    attributes.forEach(function(attribute){
+        button.setAttribute(attribute, bookObject[attribute]);
+    });
+    button.addEventListener("click", function(event){
+        removeBook(button.getAttribute("bookId"));
+    });
+};
+
+function removeBook(bookIdToRemove){
+    myLibrary.forEach(function(book){
+        if(book.bookId === bookIdToRemove) {
+            myLibrary.splice(myLibrary.indexOf(book), 1);
+        }
+    });
+    let cardToRemove = document.querySelector(`[bookid="${bookIdToRemove}"]`);
+    cardToRemove.remove()
+}
 
 function isNullOrEmpty(value){
     if(value === null){
@@ -152,24 +179,5 @@ function isNullOrEmpty(value){
     if(typeof value === "string" && value.trim().length == 0){
         return true;
     }
-
     return false;
 }
-
-
-// code for adding buttons
-
-    /*let star = document.createElement("object");
-    star.data = "star.svg";
-
-    let follow = document.createElement("object");
-    follow.data = "follow.svg";
-
-    let share = document.createElement("object");
-    share.data = "share.svg"; */
-
-    /*let buttons = [star, follow, share];
-    buttons.forEach(function (button) {
-        button.classList.add("card-svg");
-        buttonsRow.appendChild(button);
-    }); */
