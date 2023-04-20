@@ -1,5 +1,4 @@
 let myLibrary = [];
-let rmvbutton;
 
 function Book(title, author, pageCount, isRead, rating, shortDescription, image) {
     this.title = title;
@@ -13,22 +12,6 @@ function Book(title, author, pageCount, isRead, rating, shortDescription, image)
     this.bookId = myLibrary.length.toString() + "-" + this.title + "-" + this.author;
 }
 
-function addBookToLibrary(book) {
-    let bookAlreadyExists = true;
-    if(myLibrary.includes(book)) {
-        bookAlreadyExists = true;
-    } else bookAlreadyExists = false;
-
-    if(!bookAlreadyExists) {
-        myLibrary.push(book);
-    } else {
-        console.log("The book you are trying to enter already exists!");
-    }
-}
-
-harryPotter = new Book("Harry Potter", "J.K. Rolling", 200, true, 7.8);
-harryPotter2 = new Book("Harry Potter 2", "J.K. Rolling", 300, false, 8.2);
-
 formId = document.getElementById("insert-form");
 
 showFormBtn = document.getElementById("new");
@@ -39,16 +22,20 @@ showFormBtn.addEventListener("click", function(event){
 
 closeFormBtn = document.getElementById("close-form")
 closeFormBtn.addEventListener("click", function(event){
-    if(!formId.classList.contains("hidden")){
-        formId.classList.toggle("form-active");
-        formId.classList.toggle("hidden");
+    closeForm();
+});
+
+document.addEventListener("keydown", function(event){
+    if(event.key === "Escape"){
+        closeForm();
     }
 });
+
 
 const form = document.getElementById("form");
 form.addEventListener("submit", function(e){
     e.preventDefault();
-    bookObj = new Book(title.value, author.value, pageCount.value, wasRead.value ? true : null, rating.value, shortDescription.value);
+    bookObj = new Book(title.value, author.value, pageCount.value, wasRead.checked, rating.value, shortDescription.value);
     form.reset();
     myLibrary.push(bookObj);
     createNewBookCard(myLibrary[myLibrary.length-1]);
@@ -121,10 +108,10 @@ function createNewBookCard(bookObject){
 
     aboutBook.appendChild(bookDescription);
 
-    let buttonsRow = document.createElement("div");
+    /*let buttonsRow = document.createElement("div");
     buttonsRow.classList.add("buttons-row");
     createBottomButtons(buttonsRow);
-    aboutBook.appendChild(buttonsRow);
+    aboutBook.appendChild(buttonsRow);*/
 
     let removeButtonWrapper = document.createElement("div");
     removeButtonWrapper.classList.add("remove-btn");
@@ -133,10 +120,9 @@ function createNewBookCard(bookObject){
     removeButtonWrapper.appendChild(removeBtn);
     bookCard.appendChild(removeButtonWrapper);
     setDeleteButtonAttributes(removeBtn, bookObject);
-    console.log(bookObject.bookId);
 }
 
-function createBottomButtons(divToAppendTo){
+/*function createBottomButtons(divToAppendTo){
     let buttonsList = ["star.svg", "follow.svg", "share.svg"];
     buttonsList.forEach(function(element) {
         button = document.createElement("object");
@@ -144,7 +130,7 @@ function createBottomButtons(divToAppendTo){
         button.classList.add("card-svg");
         divToAppendTo.appendChild(button);
     });
-}
+} */
 
 function setDeleteButtonAttributes(button, bookObject) {
     const attributes = ["title", "author", "pageCount", "rating", "isRead", "bookId"];
@@ -181,3 +167,23 @@ function isNullOrEmpty(value){
     }
     return false;
 }
+
+function addBookToLibrary(book) {
+    let bookAlreadyExists = true;
+    if(myLibrary.includes(book)) {
+        bookAlreadyExists = true;
+    } else bookAlreadyExists = false;
+
+    if(!bookAlreadyExists) {
+        myLibrary.push(book);
+    } else {
+        alert("The book you are trying to enter already exists!");
+    }
+}
+
+function closeForm(){
+    if(!formId.classList.contains("hidden")){
+        formId.classList.toggle("form-active");
+        formId.classList.toggle("hidden");
+    }
+};
