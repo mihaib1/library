@@ -52,16 +52,6 @@ function createNewBookCard(bookObject){
     bookCardsContainer.appendChild(bookCard);
     bookCard.setAttribute("bookId", bookObject.bookId);
 
-    let bookImage = document.createElement("div");
-    bookImage.classList.add("book-image");
-    bookCard.appendChild(bookImage);
-
-    let image = document.createElement("img");
-    image.alt="book-cover";
-    image.classList.add("book-cover");
-    image.src="";
-    bookImage.appendChild(image);
-
     let aboutBook = document.createElement("div");
     aboutBook.classList.add("about-book");
     bookCard.appendChild(aboutBook);
@@ -71,33 +61,28 @@ function createNewBookCard(bookObject){
     title.value = bookObject.title;
     aboutBook.appendChild(title);
 
-    let bookDescription = document.createElement("div");
-    bookDescription.classList.add("book-description");
+    let bookDescription = createNewElement("div", "book-description")
     if(bookObject.shortDescription) {
-        bookDescription.textContent = bookObject.shortDescription;
+        //bookDescription.textContent = bookObject.shortDescription;
     }
     
-    let bookTitle = document.createElement("div");
-    bookTitle.classList.add("book-title");
+    let bookTitle = createNewElement("div", "book-title");
     if(bookObject.title){
         bookTitle.textContent += bookObject.title;
     }
 
-    bookAuthor = document.createElement("div");
-    bookAuthor.classList.add("book-author");
+    let bookAuthor = createNewElement("div", "book-author");
     if(bookObject.author){
         bookAuthor.textContent += bookObject.author;
     }
     
-    let bookPageCount = document.createElement("div");
-    bookPageCount.classList.add("book-page-num");
+    let bookPageCount = createNewElement("div", "book-page-num");
     if(isNullOrEmpty(bookObject.pageCount)){
         bookPageCount.style="display: none";
     }
     bookPageCount.textContent += bookObject.pageCount;
 
-    let bookRating = document.createElement("div");
-    bookRating.classList.add("book-rating");
+    let bookRating = createNewElement("div", "book-rating");
     if(isNullOrEmpty(bookObject.rating)) {
         bookRating.style="display: none"; 
     }
@@ -108,29 +93,33 @@ function createNewBookCard(bookObject){
 
     aboutBook.appendChild(bookDescription);
 
-    /*let buttonsRow = document.createElement("div");
-    buttonsRow.classList.add("buttons-row");
-    createBottomButtons(buttonsRow);
-    aboutBook.appendChild(buttonsRow);*/
+    let readStatusDiv = createNewElement("div", "toggle-read");
+    let readStatusButton = createNewElement("button", "readBtn");
+    if (bookObject.isRead){
+        readStatusButton.classList.add("is-read");
+    } else {
+        readStatusButton.classList.add("not-read");
+    }
+    readStatusDiv.appendChild(readStatusButton);
+    bookCard.appendChild(readStatusDiv);
+    readButtonActions(readStatusButton, bookObject);
 
-    let removeButtonWrapper = document.createElement("div");
-    removeButtonWrapper.classList.add("remove-btn");
-    let removeBtn = document.createElement("button");
-    removeBtn.classList.add("removeBtn");
+    let removeButtonWrapper = createNewElement("div", "remove-btn");
+    let removeBtn = createNewElement("button", "removeBtn");
     removeButtonWrapper.appendChild(removeBtn);
     bookCard.appendChild(removeButtonWrapper);
     setDeleteButtonAttributes(removeBtn, bookObject);
 }
 
-/*function createBottomButtons(divToAppendTo){
-    let buttonsList = ["star.svg", "follow.svg", "share.svg"];
-    buttonsList.forEach(function(element) {
-        button = document.createElement("object");
-        button.data = element;
-        button.classList.add("card-svg");
-        divToAppendTo.appendChild(button);
+
+
+function createNewElement(elementName, ...classes){
+    newElement = document.createElement(elementName);
+    classes.forEach(function(cssClass){
+        newElement.classList.add(cssClass);
     });
-} */
+    return newElement;
+}
 
 function setDeleteButtonAttributes(button, bookObject) {
     const attributes = ["title", "author", "pageCount", "rating", "isRead", "bookId"];
@@ -142,6 +131,7 @@ function setDeleteButtonAttributes(button, bookObject) {
     });
 };
 
+
 function removeBook(bookIdToRemove){
     myLibrary.forEach(function(book){
         if(book.bookId === bookIdToRemove) {
@@ -151,6 +141,27 @@ function removeBook(bookIdToRemove){
     let cardToRemove = document.querySelector(`[bookid="${bookIdToRemove}"]`);
     cardToRemove.remove()
 }
+
+function readButtonActions(button, bookObject){
+    const attributes = ["bookId", "isRead"];
+    attributes.forEach(function(attribute){
+        button.setAttribute(attribute, bookObject[attribute]);
+    });
+    button.addEventListener("click", function(event){
+        toggleReadStatus(bookObject.bookId, button);
+    })
+};
+
+function toggleReadStatus(bookIdToChangeStatus, button){
+    myLibrary.forEach(function(book){
+        if(book.bookId === bookIdToChangeStatus) {
+            book.isRead = !book.isRead;
+            button.classList.toggle("is-read");
+            button.classList.toggle("not-read");
+        }
+    });
+}
+
 
 function isNullOrEmpty(value){
     if(value === null){

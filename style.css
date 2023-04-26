@@ -130,7 +130,7 @@ li:hover{
 
 #books-cards{
     display:grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap:16px;
     padding: 8px;
 }
@@ -162,6 +162,7 @@ li:hover{
 }
 
 .book-description{
+    padding:8px;
     display:flex;
     flex-direction: column;
     gap:4px;
@@ -186,7 +187,7 @@ li:hover{
     border-left-color:gold;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     display:grid;
-    grid-template-columns: 1fr 3fr;
+    
 }
 
 .about-book > h3{
@@ -313,7 +314,7 @@ object{
 .about-book{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .hidden{
@@ -345,7 +346,7 @@ object{
     display:flex;
     flex-direction: column;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 16px;
 }
 
 .book-author::before{
@@ -391,6 +392,15 @@ label{
 #close-form{
     width:48px;
     align-self:flex-end;
+    border-radius:16px;
+    height:24px;
+    border:none;
+    background-color: red;
+    color:white;
+}
+
+#close-form::after{
+    content: "X";
 }
 
 .remove-btn{
@@ -421,4 +431,42 @@ label{
 
 .removeBtn:active{
     background-color: rgb(198, 0, 0);
+}
+
+.toggle-read{
+    grid-column: 1 / span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:8px;
+    max-height: fit-content;
+}
+
+.readBtn{
+    width: 100%;
+    color:white;
+    padding: 4px;
+    border-radius: 8px;
+    border:none;
+}
+
+
+.readBtn.is-read{
+    background-color: #33b249;
+}
+
+.readBtn.is-read::after{
+    content: "Read";
+}
+
+.readBtn.not-read{
+    background-color: #dd7973;
+}
+
+.readBtn.not-read::after{
+    content: "Not read";
+}
+
+.testClass{
+    color:blue;
 }
