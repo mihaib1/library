@@ -93,6 +93,9 @@ function createNewBookCard(bookObject){
 
     aboutBook.appendChild(bookDescription);
 
+    let buttonsContainer = createNewElement("div", "buttons-container");
+    bookCard.appendChild(buttonsContainer);
+
     let readStatusDiv = createNewElement("div", "toggle-read");
     let readStatusButton = createNewElement("button", "readBtn");
     if (bookObject.isRead){
@@ -101,13 +104,13 @@ function createNewBookCard(bookObject){
         readStatusButton.classList.add("not-read");
     }
     readStatusDiv.appendChild(readStatusButton);
-    bookCard.appendChild(readStatusDiv);
+    buttonsContainer.appendChild(readStatusDiv);
     readButtonActions(readStatusButton, bookObject);
 
     let removeButtonWrapper = createNewElement("div", "remove-btn");
     let removeBtn = createNewElement("button", "removeBtn");
     removeButtonWrapper.appendChild(removeBtn);
-    bookCard.appendChild(removeButtonWrapper);
+    buttonsContainer.appendChild(removeButtonWrapper);
     setDeleteButtonAttributes(removeBtn, bookObject);
 }
 

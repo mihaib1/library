@@ -45,27 +45,7 @@
             <div class="books">
                 <h3>Your books</h3>
                 <div id="books-cards">
-                    <div class="book-card">
 
-                        <div class="about-book">
-                            <div class="book-description">
-                                <div class="book-title">Harry Potter and the Deathly Hallows</div>
-                                <div class="book-author">J.K. Rolling</div>
-                                <div class="book-page-num">322</div>
-                            </div>
-                            <div class="buttons-row">
-                                <object data="star.svg" class="card-svg"></object>
-                                <object data="follow.svg" class="card-svg"></object>
-                                <object data="share.svg" class="card-svg"></object>
-                            </div>
-                        </div>
-                        <div class="remove-btn">
-                            <button class="removeBtn"></button>
-                        </div>
-                        <div class="toggle-read">
-                            <button class="readBtn not-read"></button>
-                        </div>
-                    </div>
                 </div>
 
             </div>
@@ -155,12 +135,12 @@
     
                 <div class="page-count">
                     <label for="pageCount">Number of pages <span aria-required="true"></span></label>
-                    <input type="number" name="pageCount" id="pageCount">
+                    <input type="number" name="pageCount" id="pageCount" required>
                 </div>
     
                 <div class="rating">
                     <label for="rating">Rating </label>
-                    <input type="number" name="rating" id="rating" step="0.01">
+                    <input type="number" name="rating" id="rating" step="0.01" required>
                 </div>
 
                 <div class="short-description">

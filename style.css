@@ -186,8 +186,7 @@ li:hover{
     border-left:solid 8px;
     border-left-color:gold;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    display:grid;
-    
+    display:grid;    
 }
 
 .about-book > h3{
@@ -467,6 +466,8 @@ label{
     content: "Not read";
 }
 
-.testClass{
-    color:blue;
+.buttonsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
