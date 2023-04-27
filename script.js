@@ -1,13 +1,12 @@
 let myLibrary = [];
 
-function Book(title, author, pageCount, isRead, rating, shortDescription, image) {
+function Book(title, author, pageCount, isRead, rating, shortDescription) {
     this.title = title;
     this.author = author;
     this.pageCount = pageCount;
     this.isRead = isRead;
     this.rating = rating;
     this.shortDescription = shortDescription;
-    this.image = image;
     this.creationDate = new Date();
     this.bookId = myLibrary.length.toString() + "-" + this.title + "-" + this.author;
 }
