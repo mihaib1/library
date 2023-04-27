@@ -86,7 +86,7 @@ function createNewBookCard(bookObject){
     if(isNullOrEmpty(bookObject.rating)) {
         bookRating.style="display: none"; 
     }
-    bookRating.textContent += bookObject.rating;
+    bookRating.textContent += bookObject.rating + "/100";
 
     let elementsToAppend = [bookTitle, bookAuthor, bookPageCount, bookRating];
     elementsToAppend.forEach((element) => bookDescription.appendChild(element));

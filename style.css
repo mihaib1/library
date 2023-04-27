@@ -471,3 +471,10 @@ label{
     justify-content: center;
     align-items: center;
 }
+
+
+.hero-title{
+    display:flex;
+    justify-content: space-between;
+    padding:16px 2em;
+}
