@@ -200,3 +200,29 @@ function closeForm(){
         formId.classList.toggle("hidden");
     }
 };
+
+const title = document.getElementById("title");
+title.addEventListener("input", (event) => {
+    const minimumLength = event.target.minLength;
+    if(title.validity.tooShort){
+        title.setCustomValidity(`The title should be at least ${minimumLength} characters long`);
+    } else {
+        title.setCustomValidity("");
+    }   
+})
+
+const author = document.getElementById("author");
+author.addEventListener("input", (event) => {
+    console.log(author.validity)
+    const minimumLength = event.target.minLength;
+    if(author.validity.patternMismatch){
+        author.setCustomValidity("Author name should only contain letters!");
+    } else {
+        author.setCustomValidity("");
+    }
+    if(author.validity.tooShort){
+        author.setCustomValidity(`Minimum length for this field is ${minimumLength}!`);
+    } else {
+        author.setCustomValidity("");
+    }
+})

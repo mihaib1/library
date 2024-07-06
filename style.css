@@ -103,6 +103,7 @@ h3, h1{
 .hero-btn:hover{
     background-color: #0076b1;
     transition-duration:0.2s;
+    cursor: pointer;
 }
 
 .hero-btn:active{
@@ -346,6 +347,7 @@ object{
     flex-direction: column;
     justify-content: center;
     border-radius: 16px;
+    gap: 16px;
 }
 
 .book-author::before{
@@ -379,6 +381,10 @@ form{
     padding: 6px;
 }
 
+#was-read{
+    width: 20px;
+}
+
 input[type=checkbox]{
     text-align: left;
 }
@@ -400,6 +406,24 @@ label{
 
 #close-form::after{
     content: "X";
+}
+
+#close-form:hover{
+    cursor: pointer;
+}
+
+#submitBtn{
+    padding: 8px;
+    border-radius: 4px;
+    margin: 4px;
+    transition-duration: 0.2s;
+    font-weight: 900;
+}
+
+#submitBtn:hover{
+    cursor: pointer;
+    background-color: rgb(205, 202, 202);
+    transition-duration: 0.2s;
 }
 
 .remove-btn{
